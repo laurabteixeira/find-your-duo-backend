@@ -38,12 +38,12 @@ app.post('/games/:id/ads', async (request, response) => {
   const gameId = request.params.id;
 
   const body = request.body;
-
+  console.log("Chegou aqui")
   const ad = await prisma.ad.create({
     data: {
       gameId,
       name: body.name,
-      yearsPlaying: body.yearsPlaying,
+      yearsPlaying: Number(body.yearsPlaying),
       discord: body.discord,
       weekDays: body.weekDays.join(','),
       hourStart: convertHourStringToMinutes(body.hourStart),
